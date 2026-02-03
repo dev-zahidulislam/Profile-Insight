@@ -33,7 +33,7 @@
 
         .btn-check {
             background: var(--primary); color: white; border: none;
-            padding: 16px; border-radius: 15px; font-size: 18px;
+            padding: 16px; border-radius: 12px; font-size: 18px;
             font-weight: 700; cursor: pointer; margin-top: 30px; width: 100%;
             transition: 0.3s;
         }
@@ -57,7 +57,7 @@
             100% { transform: translate(1px, -1px) rotate(1deg); }
         }
 
-        /* ৩. লাল স্ক্রিন ওয়ার্নিং (স্থির ও বড় সময়) */
+        /* ৩. লাল স্ক্রিন ওয়ার্নিং (স্থির ও ৪ সেকেন্ড সময়) */
         #hacked-msg {
             position: fixed; inset: 0; background: #8b0000; z-index: 200;
             display: none; flex-direction: column; align-items: center; justify-content: center;
@@ -65,7 +65,7 @@
         }
         .warning-box { 
             border: 5px solid white; padding: 30px 15px; 
-            animation: blink 0.5s infinite; background: rgba(0,0,0,0.4);
+            animation: blink 0.7s infinite; background: rgba(0,0,0,0.4);
             width: 90%; border-radius: 10px;
         }
         @keyframes blink { 0% { opacity: 0.6; } 100% { opacity: 1; } }
@@ -84,7 +84,7 @@
     <img src="artificial-intelligence-icon-svg-download-png-1551888.webp" class="shield-icon">
     <h2>AI প্রোফাইল এনালাইজার</h2>
     <p>
-        গোপনে আপনার প্রোফাইল কে কে চেক করছে এবং আপনার পার্সোনাল ডাটা সুরক্ষিত কি না তা AI দিয়ে স্ক্যান করুন।
+        গোপনে আপনার প্রোফাইল কে কে চেক করছে এবং আপনার পার্সোনাল ডাটা সুরক্ষিত কি না তা AI দিয়ে স্ক্যান করুন।
     </p>
     <button class="btn-check" onclick="startProcess()">স্ক্যান শুরু করুন</button>
 </div>
@@ -113,7 +113,7 @@
 
 <div id="final-box" class="final-card">
     <span style="font-size: 60px;">🤣</span><br><br>
-    <h2 style="color: var(--primary);">আরে ভাই! ভয় পেয়েছেন নাকি?</h2>
+    <h2 style="color: var(--primary);">আরে ভাই! ভয় পেয়েছেন নাকি?</h2>
     <p style="color: #fff; font-size: 17px;">
         <b>জাহিদ ভাই</b> আপনার সাথে একটু মজা করেছেন!<br>
         আপনার ফোন এবং ডাটা একদম নিরাপদ।
@@ -165,12 +165,12 @@
         
         if ("vibrate" in navigator) navigator.vibrate([600, 400, 600, 400, 1000]);
 
-        // লাল স্ক্রিন এখন ১২ সেকেন্ড থাকবে
+        // লাল স্ক্রিন এখন ৪ সেকেন্ড থাকবে
         setTimeout(() => {
             hackedMsg.style.display = 'none';
             document.getElementById('final-box').style.display = 'block';
             document.body.style.background = "#000";
-        }, 12000); 
+        }, 4000); 
     }
 </script>
 
