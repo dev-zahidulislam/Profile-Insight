@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Google Security: Profile Insight</title>
+    
+    <link rel="icon" href="images.png" type="image/png">
+
+    <style>
+        /* সুন্দর বাংলা ফন্ট গুগল থেকে */
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
+
+        :root { --primary: #8b5cf6; --neon: #00ff41; --danger: #ff0000; }
+        
+        body, html { 
+            margin: 0; padding: 0; width: 100%; height: 100%; 
+            background: #000; font-family: 'Hind Siliguri', sans-serif;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+
+        /* ১. এন্ট্রি পেজ (সুন্দর বাংলা ফন্ট) */
+        #entry-page {
+            text-align: center; z-index: 10; padding: 40px 25px;
+            background: #0a0a0a; border: 1px solid #1f2937; border-radius: 30px;
+            box-shadow: 0 0 50px rgba(0,0,0,1); width: 85%; max-width: 380px;
+        }
+        
+        .shield-icon { width: 80px; margin-bottom: 20px; filter: drop-shadow(0 0 15px var(--primary)); }
+        
+        h2 { font-weight: 700; color: #fff; margin: 0; font-size: 24px; }
+        p { color: #94a3b8; font-size: 15px; line-height: 1.6; margin-top: 15px; }
+
+        .btn-check {
+            background: var(--primary); color: white; border: none;
+            padding: 16px; border-radius: 15px; font-size: 18px;
+            font-weight: 700; cursor: pointer; margin-top: 30px; width: 100%;
+            transition: 0.3s;
+        }
+
+        /* ২. হ্যাকিং টার্মিনাল */
+        #hacker-ui {
+            position: fixed; inset: 0; background: #000; padding: 25px;
+            display: none; flex-direction: column; z-index: 100;
+            color: var(--neon); font-family: 'Courier New', monospace;
+        }
+        .hacker-gif {
+            width: 100%; max-width: 260px; margin: 0 auto 15px;
+            border: 1px solid var(--neon); border-radius: 10px;
+        }
+
+        /* কাঁপুনি ইফেক্ট */
+        .shake { animation: shake-anim 0.1s infinite; }
+        @keyframes shake-anim {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            50% { transform: translate(-1px, -2px) rotate(-1deg); }
+            100% { transform: translate(1px, -1px) rotate(1deg); }
+        }
+
+        /* ৩. লাল স্ক্রিন ওয়ার্নিং (স্থির ও বড় সময়) */
+        #hacked-msg {
+            position: fixed; inset: 0; background: #8b0000; z-index: 200;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 20px;
+        }
+        .warning-box { 
+            border: 5px solid white; padding: 30px 15px; 
+            animation: blink 0.7s infinite; background: rgba(0,0,0,0.4);
+            width: 90%; border-radius: 10px;
+        }
+        @keyframes blink { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+
+        /* ৪. ফাইনাল রিভিল (বাংলা) */
+        .final-card {
+            background: #111; color: white; padding: 40px 25px;
+            border-radius: 25px; text-align: center; display: none;
+            border: 1px solid #333; z-index: 300; width: 85%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="entry-page">
+    <img src="artificial-intelligence-icon-svg-download-png-1551888.webp" class="shield-icon">
+    <h2>AI প্রোফাইল এনালাইজার</h2>
+    <p>
+        গোপনে আপনার প্রোফাইল কে কে চেক করছে এবং আপনার পার্সোনাল ডাটা সুরক্ষিত কি না তা AI দিয়ে স্ক্যান করুন।
+    </p>
+    <button class="btn-check" onclick="startProcess()">স্ক্যান শুরু করুন</button>
+</div>
+
+<div id="hacker-ui">
+    <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJndXh4ZzZ4eXh4ZzZ4eXh4ZzZ4eXh4ZzZ4eXh4ZzZ4eXh4ZzZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/YQitE4YNQNahy/giphy.gif" class="hacker-gif">
+    <div id="terminal-logs" style="font-size: 13px; line-height: 1.8;"></div>
+</div>
+
+<div id="hacked-msg">
+    <div class="warning-box">
+        <h1 style="font-size: 26px; margin: 0; color: #fff; font-family: sans-serif;">SYSTEM COMPROMISED!</h1>
+        <h2 style="font-size: 18px; margin-top: 15px; letter-spacing: 1px; line-height: 1.4; font-family: sans-serif;">
+            YOUR PHONE IS HACKED BY<br>BANGLADESH AWAMI LEAGUE
+        </h2>
+        <div style="height: 2px; background: white; margin: 20px 0;"></div>
+        <p style="font-size: 13px; text-align: left; line-height: 1.7; color: white; font-family: monospace;">
+            > Remote Control: ACTIVE<br>
+            > Gallery & Photos: 92% UPLOADED<br>
+            > Messenger & Instagram: CLONED<br>
+            > Private WhatsApp DB: EXTRACTED<br>
+            > Status: WIPING ALL MEMORY...
+        </p>
+    </div>
+</div>
+
+<div id="final-box" class="final-card">
+    <span style="font-size: 60px;">🤣</span><br><br>
+    <h2 style="color: var(--primary);">আরে ভাই! ভয় পেয়েছেন নাকি?</h2>
+    <p style="color: #fff; font-size: 17px;">
+        <b>জাহিদ ভাই</b> আপনার সাথে একটু মজা করেছেন!<br>
+        আপনার ফোন এবং ডাটা একদম নিরাপদ।
+    </p>
+    <p style="font-size: 14px; color: #64748b;">এখন চিল করুন! ✌️</p>
+</div>
+
+<script>
+    function startProcess() {
+        document.getElementById('entry-page').style.display = 'none';
+        const hackerUi = document.getElementById('hacker-ui');
+        const logs = document.getElementById('terminal-logs');
+        hackerUi.style.display = 'flex';
+
+        const lines = [
+            "> Initializing Cloud Bypass...",
+            "> Connection: SECURE [TUNNEL_AL_HQ]",
+            "> Accessing Front Camera... [SUCCESS]",
+            "> Fetching Gallery: DCIM/Photos... [Found 1402]",
+            "> Injecting Trojan in FB Messenger...",
+            "> Cloning Instagram Chats... [DONE]",
+            "> Extracting Private Databases...",
+            "> Remote login from: AL-Digital-Center",
+            "> CRITICAL: Firewall Destroyed!",
+            "> STATUS: SYSTEM UNDER FULL CONTROL"
+        ];
+
+        let i = 0;
+        function type() {
+            if (i < lines.length) {
+                let p = document.createElement('div');
+                p.innerHTML = lines[i];
+                logs.appendChild(p);
+                i++;
+                if(i === 6) document.body.classList.add('shake');
+                setTimeout(type, 850);
+            } else {
+                setTimeout(showHackedMessage, 1500);
+            }
+        }
+        type();
+    }
+
+    function showHackedMessage() {
+        document.body.classList.remove('shake'); 
+        document.getElementById('hacker-ui').style.display = 'none';
+        const hackedMsg = document.getElementById('hacked-msg');
+        hackedMsg.style.display = 'flex';
+        
+        if ("vibrate" in navigator) navigator.vibrate([600, 400, 600, 400, 1000]);
+
+        // লাল স্ক্রিন এখন ১২ সেকেন্ড থাকবে
+        setTimeout(() => {
+            hackedMsg.style.display = 'none';
+            document.getElementById('final-box').style.display = 'block';
+            document.body.style.background = "#000";
+        }, 12000); 
+    }
+</script>
+
+</body>
+</html>
